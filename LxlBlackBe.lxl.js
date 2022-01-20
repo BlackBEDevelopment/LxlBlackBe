@@ -182,8 +182,11 @@ mc.listen("onPreJoin", function (pl) {
 
                 logger.warn('发现玩家' + pl.realName + '在BlackBe云端黑名单上，已断开连接！');
                 let record = res.data.info[0];
-                logger.warn('玩家违规等级：' + record.level);
-                logger.warn('玩家违规原因：' + record.info);
+                if(record)
+                {
+                    logger.warn('玩家违规等级：' + record.level);
+                    logger.warn('玩家违规原因：' + record.info);
+                }
             }
             else if(!conf.get("HidePassMessage",false))
                 logger.info('对玩家' + pl.realName + '的云端黑名单检测通过。');
