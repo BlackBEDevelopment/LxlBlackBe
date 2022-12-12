@@ -3,8 +3,8 @@
 // 作者：yqs112358 & BlackBE运营团队
 // 首发平台：MineBBS
 
-var _VER = '1.9.0'
-var _BLACKBE_ADDRESS_PREFIX = "https://api.blackbe.xyz/openapi/v3/check/?"
+var _VER = '1.9.1'
+var _BLACKBE_ADDRESS_PREFIX = "https://api.blackbe.work/openapi/v3/check/?"
 
 logger.setConsole(true);
 logger.setFile("./logs/BlackBe.log", 3);
