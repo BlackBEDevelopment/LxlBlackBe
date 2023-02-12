@@ -1,9 +1,9 @@
 // 文件名：LxlBlackBe.lxl.js
-// 文件功能：LXL平台下BlackBe云黑与本地黑名单工具
+// 文件功能：LiteLoaderBDS平台下BlackBe云黑与本地黑名单工具
 // 作者：yqs112358 & BlackBE运营团队
 // 首发平台：MineBBS
 
-var _VER = '1.9.1'
+var _VER = '1.9.2'
 var _BLACKBE_ADDRESS_PREFIX = "https://api.blackbe.work/openapi/v3/check/?"
 
 logger.setConsole(true);
@@ -47,7 +47,7 @@ function GetLocalKickMsg(banData) {
 }
 
 function CheckPlayerLocal(pl) {
-    blackList = conf.get("BlackList", []);
+    let blackList = conf.get("BlackList", []);
     for (var i in blackList) {
         if (blackList[i].name == pl.realName ||
             blackList[i].xuid == pl.xuid ||
@@ -138,7 +138,7 @@ function ListBan() {
 
 //自动解ban
 setInterval(function () {
-    blackList = conf.get("BlackList", []);
+    let blackList = conf.get("BlackList", []);
     for (var i in blackList) {
         if (new Date(blackList[i].endTime).getTime() <= new Date().getTime()) {
             let msg = '玩家' + blackList[i].name + '的黑名单封禁已到期。已自动解封';
@@ -265,7 +265,7 @@ mc.regConsoleCmd("banlist", "查询本地黑名单列表", function (args) {
     ListBan();
 });
 
-log('[BlackBe] JsBlackBe云黑插件已装载  当前版本：' + _VER);
+log('[BlackBe] LLSEBlackBe云黑插件已装载  当前版本：' + _VER);
 log('[BlackBe] 作者：yqs112358   首发平台：MineBBS');
 log('[BlackBe] 想要联系作者可前往MineBBS论坛');
 
