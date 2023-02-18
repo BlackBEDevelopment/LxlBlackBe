@@ -3,7 +3,7 @@
 // 作者：yqs112358 & BlackBE运营团队
 // 首发平台：MineBBS
 
-var _VER = '1.9.2'
+var _VER = '1.9.3'
 var _BLACKBE_ADDRESS_PREFIX = "https://api.blackbe.work/openapi/v3/check/?"
 
 logger.setConsole(true);
@@ -89,7 +89,7 @@ function BanPlayer(name, minutes, reason) {
     }
 
     //查询是否已存在
-    blackList = conf.get("BlackList", []);
+    let blackList = conf.get("BlackList", []);
     for (var i in blackList) {
         if (blackList[i].name == name) {
             //存在
@@ -113,7 +113,7 @@ function BanPlayer(name, minutes, reason) {
 }
 
 function UnbanPlayer(name) {
-    blackList = conf.get("BlackList", []);
+    let blackList = conf.get("BlackList", []);
     for (var i in blackList) {
         if (blackList[i].name == name) {
             blackList.splice(i, 1);
@@ -125,7 +125,7 @@ function UnbanPlayer(name) {
 }
 
 function ListBan() {
-    blackList = conf.get("BlackList", []);
+    let blackList = conf.get("BlackList", []);
     if (blackList.length == 0)
         log('本地黑名单列表为空。');
     else {
