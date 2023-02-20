@@ -3,7 +3,7 @@
 // 作者：yqs112358 & BlackBE运营团队
 // 首发平台：MineBBS
 
-var _VER = '1.9.3'
+var _VER = '1.9.4'
 var _BLACKBE_ADDRESS_PREFIX = "https://api.blackbe.work/openapi/v3/check/?"
 
 logger.setConsole(true);
@@ -20,8 +20,8 @@ conf.init("BlackList", []);
 
 
 function FormatDate(value) {
-    var date = new Date(value);
-    var y = date.getFullYear(),
+    let date = new Date(value);
+    let y = date.getFullYear(),
         m = date.getMonth() + 1,
         d = date.getDate(),
         h = date.getHours(),
@@ -32,7 +32,7 @@ function FormatDate(value) {
     if (h < 10) { h = '0' + h; }
     if (i < 10) { i = '0' + i; }
     if (s < 10) { s = '0' + s; }
-    var t = y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s;
+    let t = y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s;
     return t;
 }
 
@@ -48,7 +48,7 @@ function GetLocalKickMsg(banData) {
 
 function CheckPlayerLocal(pl) {
     let blackList = conf.get("BlackList", []);
-    for (var i in blackList) {
+    for (let i in blackList) {
         if (blackList[i].name == pl.realName ||
             blackList[i].xuid == pl.xuid ||
             (conf.get("banip") && blackList[i].ip == pl.ip)) {
@@ -77,7 +77,7 @@ function BanPlayer(name, minutes, reason) {
     else {
         //离线
         banInfo.name = name;
-        xuidStr = data.name2xuid(name);
+        let xuidStr = data.name2xuid(name);
         if (xuidStr && xuidStr != "")
             banInfo.xuid = xuidStr;
     }
@@ -90,7 +90,7 @@ function BanPlayer(name, minutes, reason) {
 
     //查询是否已存在
     let blackList = conf.get("BlackList", []);
-    for (var i in blackList) {
+    for (let i in blackList) {
         if (blackList[i].name == name) {
             //存在
             if (banInfo.xuid)
@@ -139,7 +139,7 @@ function ListBan() {
 //自动解ban
 setInterval(function () {
     let blackList = conf.get("BlackList", []);
-    for (var i in blackList) {
+    for (let i in blackList) {
         if (new Date(blackList[i].endTime).getTime() <= new Date().getTime()) {
             let msg = '玩家' + blackList[i].name + '的黑名单封禁已到期。已自动解封';
             mc.broadcast(msg);
